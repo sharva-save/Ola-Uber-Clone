@@ -22,19 +22,10 @@ backend/Thumbs.db
 # ==============================
 frontend/node_modules/
 frontend/.env
-frontend/.env.local
-frontend/build/
-frontend/dist/
-frontend/.DS_Store
-frontend/Thumbs.db
-frontend/package-lock.json
+
 
 # React Native specific
-native/android/
-native/ios/
-native/expo/
-native/.expo/
-native/.expo-shared/
+
 native/node_modules/
 native/.env
 
