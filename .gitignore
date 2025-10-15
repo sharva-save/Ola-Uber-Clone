@@ -1,4 +1,4 @@
-node_module# ==============================
+# ==============================
 # 🚫 Node.js / Express backend
 # ==============================
 backend/node_modules/
@@ -22,12 +22,12 @@ backend/Thumbs.db
 # ==============================
 frontend/node_modules/
 frontend/.env
-
+!frontend/**       # Track everything else in frontend
 
 # React Native specific
-
 native/node_modules/
 native/.env
+!native/**         # Track everything else in native
 
 # ==============================
 # 🧰 General project ignores
