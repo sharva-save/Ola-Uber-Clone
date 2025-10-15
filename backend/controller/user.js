@@ -13,6 +13,13 @@ const addUser = async (req, res) => {
         success: false,
       });
     }
+    // const userExist = user.findOne({ email });
+    // if (userExist) {
+    //   return  res
+    //   .status(401)
+    //   .json({ message: "User exist with this email", success: fales });
+    // }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await user.create({

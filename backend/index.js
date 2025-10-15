@@ -13,10 +13,13 @@ const port = process.env.PORT;
 
 connectToDb();
 const userRoute = require("./routes/registration.routes");
+const captainRoute = require("./routes/captain.route");
 
 app.use(cors())
 app.use(cookieParser())
 app.use("/user", userRoute)
+
+app.use("/captain" ,captainRoute)
 
 
 
