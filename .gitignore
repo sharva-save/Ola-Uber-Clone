@@ -2,57 +2,24 @@
 # 🚫 Node.js / Express backend
 # ==============================
 backend/node_modules/
-backend/.env
-backend/.env.local
-backend/package-lock.json
 
-# Logs
-backend/logs
-backend/*.log
-backend/npm-debug.log*
-backend/yarn-debug.log*
-backend/yarn-error.log*
 
-# OS files
-backend/.DS_Store
-backend/Thumbs.db
+
+
+
 
 # ==============================
 # ⚛️ React / React Native frontend
 # ==============================
-frontend/node_modules/
-frontend/.env
-!frontend/**       # Track everything else in frontend
+frontent/node_modules/
+      # Track everything else in frontend
 
 # React Native specific
 native/node_modules/
-native/.env
-!native/**         # Track everything else in native
+        # Track everything else in native
 
 # ==============================
 # 🧰 General project ignores
 # ==============================
-node_modules/
-.env
-.env.local
-*.log
-.DS_Store
-Thumbs.db
-*.lock
-.vscode/
-.idea/
-coverage/
-dist/
-build/
-tmp/
-temp/
 
-# ==============================
-# ⚙️ Optional (for security)
-# ==============================
-# Don’t upload credentials or config files
-*.pem
-*.key
-*.crt
-*.p12
-*.jks
+
