@@ -3,23 +3,22 @@
 # ==============================
 backend/node_modules/
 
-
-
-
-
-
 # ==============================
 # ⚛️ React / React Native frontend
 # ==============================
-frontent/node_modules/
-      # Track everything else in frontend
-
-# React Native specific
+frontent/node_modules/      # your folder name
 native/node_modules/
-        # Track everything else in native
 
 # ==============================
 # 🧰 General project ignores
 # ==============================
+# OS files
+.DS_Store
+Thumbs.db
 
+# Logs
+*.log
 
+# Build folders
+dist/
+build/
