@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import Header from "./Header";
 import { useRouter } from "expo-router";
+import axios from "axios";
 
 export default function CaptainSignup() {
   const router = useRouter();
@@ -17,17 +18,19 @@ export default function CaptainSignup() {
   const [userData, setuserData] = useState();
 
   const onSubmit = (e) => {
-    setEmail(''),
-    setName('')
-    setPassword('')
-    setuserData('')
+    (setEmail(""), setName(""));
+    setPassword("");
+    setuserData("");
     console.log(name);
     console.log(email);
     console.log(password);
-    setuserData({email:email, name:name, password:password})
+    setuserData({ email: email, name: name, password: password });
     console.log(userData);
-    
-  }
+
+
+    const response = axios.post()
+
+  };
 
   return (
     <View>
@@ -36,24 +39,27 @@ export default function CaptainSignup() {
       <View style={styles.container}>
         <Text style={styles.Text}>What's your Name</Text>
         <TextInput
-        value={name}
-        onChangeText={(e) => setName(e)}
+        type='text'
+          value={name}
+          onChangeText={(e) => setName(e)}
           style={styles.placeholder}
           placeholder="What's your Name"
         ></TextInput>
 
         <Text style={styles.Text}>What's your email</Text>
         <TextInput
-        value={email}
-        onChangeText={(e) => setEmail(e)}
+        type='email'
+          value={email}
+          onChangeText={(e) => setEmail(e)}
           style={styles.placeholder}
           placeholder="What's your email"
         ></TextInput>
 
         <Text style={styles.Text}>What's your Password</Text>
         <TextInput
-        value={password}
-        onChangeText={(e) => setPassword(e)}
+        type='password'
+          value={password}
+          onChangeText={(e) => setPassword(e)}
           style={styles.placeholder}
           placeholder="What's your Password"
         ></TextInput>
@@ -64,7 +70,6 @@ export default function CaptainSignup() {
           <Text style={styles.butText}> Create Account As Captain</Text>
         </TouchableOpacity>
       </View>
-      <View></View>
       <View
         style={{
           justifyContent: "center",

@@ -35,6 +35,7 @@ export default function ModalScreen() {
         <Text style={styles.Text}>What's your Email</Text>
         <TextInput
           value={email}
+          type="email"
           onChangeText={(e) => setEmail(e)}
           style={styles.input}
           placeholder="Enter your Email"

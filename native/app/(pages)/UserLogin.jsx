@@ -5,9 +5,11 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import Header from "./Header";
 import { useRouter } from "expo-router";
+import axios from "axios";
 
 export default function UserLogin() {
   const router = useRouter();
@@ -22,7 +24,20 @@ export default function UserLogin() {
     console.log(userData);
     setEmail("");
     setPassword("");
+
+    const response = axios
+      .post("http://192.168.7.4:3000/user/login", userData)
+      .then((e) => {
+        console.log("data get successfully" ,e);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
+      console.log(response);
+      Alert.alert("Login Successfully")
+      
   };
+
   return (
     <>
       <Header />
@@ -35,6 +50,7 @@ export default function UserLogin() {
         <View style={styles.formContainer}>
           <Text>What's your email</Text>
           <TextInput
+            type="email"
             value={email}
             onChangeText={setEmail}
             placeholder="Enter your email"
@@ -43,9 +59,9 @@ export default function UserLogin() {
 
           <Text>What's your Password</Text>
           <TextInput
+            secureTextEntry={true}
             value={password}
             onChangeText={setPassword}
-            secureTextEntry
             placeholder="Enter your Password"
             style={styles.input}
           />
@@ -72,13 +88,13 @@ export default function UserLogin() {
           </Text>
         </TouchableOpacity>
       </View>
-        <View style={{alignItems:'center', justifyContent:'center'}}>
-      <TouchableOpacity
-        onPress={() => router.push("/(pages)/CaptainLogin")}
-        style={styles.button2}
-      >
-        <Text style={styles.login}> Signin As Captain</Text>
-      </TouchableOpacity>
+      <View style={{ alignItems: "center", justifyContent: "center" }}>
+        <TouchableOpacity
+          onPress={() => router.push("/(pages)/CaptainLogin")}
+          style={styles.button2}
+        >
+          <Text style={styles.login}> Signin As Captain</Text>
+        </TouchableOpacity>
       </View>
     </>
   );
@@ -120,8 +136,8 @@ const styles = StyleSheet.create({
   button2: {
     backgroundColor: "#2b7fff",
     borderRadius: 50,
-    alignItems:'center',
-    alignContent:'center',
+    alignItems: "center",
+    alignContent: "center",
     padding: 20,
     marginTop: 20,
   },

@@ -5,9 +5,11 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Alert
 } from "react-native";
 import Header from "./Header";
 import { useRouter } from "expo-router";
+import axios from "axios";
  const UserSignup =()=> {
    const router = useRouter();
     const [name, setName] = useState();
@@ -25,6 +27,19 @@ import { useRouter } from "expo-router";
       console.log(password);
       setuserData({email:email, name:name, password:password})
       console.log(userData);
+
+      const response = axios
+            .post("http://192.168.7.4:3000/user/create", userData)
+            .then((res) => {
+              console.log("Response:", res);
+              return res;
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+            console.log(response);
+            Alert.alert("Account Created Successfully");
+            router.push("/(pages)/UserLogin");
       
     }
   return (
@@ -34,6 +49,7 @@ import { useRouter } from "expo-router";
           <View style={styles.container}>
             <Text style={styles.Text}>What's your Name</Text>
             <TextInput
+            type='text'
             value={name}
             onChangeText={(e) => setName(e)}
               style={styles.placeholder}
@@ -42,6 +58,7 @@ import { useRouter } from "expo-router";
     
             <Text style={styles.Text}>What's your email</Text>
             <TextInput
+            type='email'
             value={email}
             onChangeText={(e) => setEmail(e)}
               style={styles.placeholder}
@@ -50,6 +67,7 @@ import { useRouter } from "expo-router";
     
             <Text style={styles.Text}>What's your Password</Text>
             <TextInput
+            secureTextEntry={true}
             value={password}
             onChangeText={(e) => setPassword(e)}
               style={styles.placeholder}
