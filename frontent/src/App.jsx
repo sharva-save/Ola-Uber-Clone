@@ -1,19 +1,33 @@
-import Home from './pages/Home'
+import Start from './pages/start'
 import { Route, Routes } from 'react-router-dom'
 import UserLogin from './pages/UserLogin'
-import USerSignup from './pages/USerSignup'
+import UserSignup from './pages/UserSignup'
+import Home from './pages/Home'
 import CaptainLogin from './pages/CaptainLogin'
 import CaptainSignup from './pages/CaptainSignup'
+import { useCallback, useContext } from 'react'
+import { UserDataContext } from './context/UserContext'
+import UserProtectedWrapper from './pages/UserProtectedWrapper'
 const App = () => {
+  const ans = useContext(UserDataContext)
+  console.log(ans);
+  
   return (
     <div> 
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Start/>}/>
         <Route path='/login' element={<UserLogin/>}/>
-        <Route path='/signup' element={<USerSignup/>}/>
+        <Route path='/signup' element={<UserSignup/>}/>
         <Route path='/captain-login' element={<CaptainLogin/>}/>
         <Route path='/captain-signup' element={<CaptainSignup/>}/>
+        <Route path='/home' element={
+          <UserProtectedWrapper>
+            <Home/>
+          </UserProtectedWrapper>
+          }/>
       </Routes>
+
+      
     </div>
   )
 }
